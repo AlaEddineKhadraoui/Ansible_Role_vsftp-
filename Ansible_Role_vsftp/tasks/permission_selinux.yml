@@ -1,0 +1,25 @@
+---
+- name: install required selinux tools
+  package:
+          name: policycoreutils-python-utils
+          state: present
+
+- name: configure vsftpd permissions
+  file:
+          path: /var/ftp/pub
+          mode: '0777'
+
+- name: set boolean  ftpd_anon_write to on
+  seboolean:
+          name: ftpd_anon_write on
+          state: yes
+          persistent: yes
+
+- name: set SElinux context lable to /var/ftp/pub
+  sefcontex:
+          target: '/var/ftp/pub(/.*)?'
+          setype: public_content_rw_t 
+          state: present
+  notify: run restorecon
+
+

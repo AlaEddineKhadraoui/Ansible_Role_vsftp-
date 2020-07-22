@@ -1,0 +1,22 @@
+---
+- name: install vsftpd
+  package:
+          name: vsftpd
+          state: present
+- name: enable vsftpd
+  service:
+          name: vsftpd
+          state: started
+          enabled: yes
+- name: access on firewall
+  firewalld:
+          service: ftp
+          state: enabled
+          permanent: yes
+          immediate: yes
+- name: reload firewalld
+  shell:
+          cmd: firewall-cmd --reload  
+
+
+

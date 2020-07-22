@@ -1,0 +1,6 @@
+---
+- name: configure vsftpd by template
+  templates:
+          src: vsftpd.j2
+          dst: /etc/vsftpd/vsftpd.conf
+  notify: restart vsftpd

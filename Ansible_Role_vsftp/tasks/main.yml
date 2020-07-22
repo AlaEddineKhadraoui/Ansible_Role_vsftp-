@@ -1,0 +1,9 @@
+---
+- name: vsftpd basic operations
+  include: install_enable_access.yml
+
+- name: configure vsftpd config file
+  include: config_vsftpd_template.yml 
+
+- name: configure vsftpd permissions and selinux
+  include: permission_selinux.yml  

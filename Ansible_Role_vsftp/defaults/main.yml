@@ -1,0 +1,4 @@
+anonymous_enable: yes
+local_enable: yes
+write_enable: yes
+annon_upload_enable: yes 
